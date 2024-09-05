@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Business Leads</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                    <h1 class="mb-4">Current Leads</h1>
+                    
+                    <!-- Buttons to Create Lead and View Leads Received -->
+                    <a href="/add_lead" class="btn btn-primary btn-lg mr-3">
+                        Create Lead
+                    </a>
+                    <a href="/leads" class="btn btn-success btn-lg">
+                        Leads Received
+                    </a>
+                </div>
+            </div>
+
+            <!-- Block for other content to be included -->
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap CDN (JS disabled) -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    </body>
+</html>

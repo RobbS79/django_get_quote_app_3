@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="get">
+    <table>
+      {% for lead in leads %}
+        <tr>
+          <td>{{ lead.customer_name }}
+              {{ lead.amount }}
+              {{ lead.preferred_mean_of_transportation }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+    <div>
+    <button onclick="window.location.href='{% url 'leads.html' %}'">Go to Some Page</button>
+  </div>
+{% endblock %}
