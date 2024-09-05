@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from leads.views import hello
+#from leads.views import hello
 from leads.models import Lead, MeanOfTransportation
-from leads.views import hello, delete_lead, render_leads, LeadCreateView, LeadsView, compare_volumes
+from leads.views import delete_lead, LeadCreateView, LeadsView, compare_volumes, LeadListView, LandingPageView
 
 
 admin.site.register(Lead)
@@ -26,9 +26,10 @@ admin.site.register(MeanOfTransportation)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("hello/<s0>", hello),
+    path("", LandingPageView.as_view(), name="landing.html"),
+    #path("hello/<s0>", hello),
     path("delete/<customer_name>",delete_lead),
-    path("leads/", LeadsView.as_view(), name="leads.html"),
+    path("leads/", LeadListView.as_view(), name="leads.html"),
     path("add_lead/", LeadCreateView.as_view(), name="lead_form.html"),
-    path("compare_volumes", compare_volumes)
+    path("compare_volumes", compare_volumes),
 ]

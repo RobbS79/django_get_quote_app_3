@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
@@ -6,7 +5,6 @@ from .forms import LeadForm
 from .models import Lead
 from .viz import viz_compare_volumes
 import pandas as pd
-from .models import Lead
 
 
 def compare_volumes(request):
@@ -19,14 +17,6 @@ def compare_volumes(request):
     return HttpResponse(plot_html)
 
 
-def hello(request, s0):
-    s1 = request.GET.get('s1', '')
-    return render(
-        request, template_name='leads.html',
-        context={'adjectives': [s0, s1, 'beautiful', 'wonderful'],
-                 "movies": Lead.objects.all()}
-    )
-
 def delete_lead(request,customer_name):
     try:
         lead = Lead.objects.get(customer_name=customer_name)
@@ -37,9 +27,18 @@ def delete_lead(request,customer_name):
     except Lead.DoesNotExist:
         print("No lead found with the given customer name.")
 
-def render_leads(request):
-    leads = Lead.objects.all()
-    return leads
+
+class LandingPageView(TemplateView):
+    template_name = "landing_page.html"
+
+
+class LeadListView(TemplateView):
+    template_name = 'leads.html'  # Path to your template
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['leads'] = Lead.objects.all()  # Fetch all leads and add to context
+        return context
 
 
 class LeadCreateView(CreateView):
