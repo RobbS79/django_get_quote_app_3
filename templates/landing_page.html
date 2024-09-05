@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h2 class="mt-5">Welcome to Our Business Leads Platform!</h2>
+        <p class="lead">Generate and manage your business leads efficiently with our platform. Start by creating a new lead or viewing the ones you've received.</p>
+        
+        <!-- Call to action buttons -->
+        <a href="/add_lead" class="btn btn-primary btn-lg mt-3 mr-3">
+            Create New Lead
+        </a>
+        <a href="/leads" class="btn btn-secondary btn-lg mt-3">
+            View Leads
+        </a>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-6 text-center">
+        <h3>Why Choose Us?</h3>
+        <p>We offer a simple and efficient solution to manage and grow your business leads.</p>
+        <i class="fas fa-chart-line fa-3x text-primary"></i>
+    </div>
+    <div class="col-md-6 text-center">
+        <h3>Start Generating Leads Today</h3>
+        <p>Create new leads, track their status, and receive insights into your business growth.</p>
+        <i class="fas fa-user-plus fa-3x text-success"></i>
+    </div>
+</div>
+{% endblock %}
